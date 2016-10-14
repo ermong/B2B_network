@@ -6,12 +6,12 @@
         <div class='row'>
             <div class='col-md-2'>Filtrer med:</div>
             <div class='col-md-4'>
-                <input type="text" />
+                <input type="text" [(ngModel)]='filter'/>
             </div>
         </div>
         <div class='row'>
             <div class='col-md-6'>
-                <h3>Filtrert med: </h3>
+                <h3>Filtrert med: {{filter}}</h3>
             </div>
         </div>
     </div>
@@ -20,8 +20,8 @@
             <thead>
                 <tr>
                     <th>
-                        <button class='btn btn-primary'>
-                            Vis bilder
+                        <button class='btn btn-primary' (click)='toggleVisBilder()'>
+                            {{visBilder ? 'Vis' : "Skjul"}} bilder
                         </button>
                     </th>
                     <th> Medlem</th>
@@ -33,9 +33,9 @@
                     <td><img [src]='medlem.logoUrl'
                             [title]='medlem.navn'
                             [style.width.px]='iconPxWidth'
-                            *ngIf='medlem.logoUrl'></td>
+                            *ngIf='visBilder && medlem.logoUrl'></td>
                     <td>{{medlem.navn}}</td>
-                    <td><button class='btn btn-secondary' *ngFor='#kategori of medlem.kategorier'>{{kategori.navn}}</button></td>
+                    <td><button class='btn btn-xs btn-distribuert' *ngFor='#kategori of medlem.kategorier'>{{kategori.navn}}</button></td>
                 </tr>
             </tbody>
         </table>

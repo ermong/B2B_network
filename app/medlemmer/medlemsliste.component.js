@@ -22,24 +22,47 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 function MedlemslisteComponent() {
                     this.iconPxWidth = 100;
                     this.visBilder = true;
+                    this.filter = "";
                     this.medlemslisteHeading = 'Medlemmer i nettverket';
                     this.medlemmer = [
                         {
                             "medlem_id": 1,
-                            "logoUrl": "http://www.knowit.no/globalassets/system/icons-and-logotypes/knowit-logotypes/knowit-logo-b.png/Large50",
-                            "navn": "Knowit Sør AS",
-                            "kategorier": [
-                                { "navn": "Konsulent" },
-                                { "navn": "Webutvikling" }
-                            ]
+                            "navn": "Idrettspartner",
+                            "logoUrl": "",
+                            "kategorier": []
                         },
                         {
                             "medlem_id": 2,
+                            "logoUrl": "http://www.knowit.no/globalassets/system/icons-and-logotypes/knowit-logotypes/knowit-logo-b.png/Large50",
+                            "navn": "Knowit Sør AS",
+                            "kategorier": [
+                                {
+                                    "kategori_id": 1,
+                                    "navn": "Konsulent"
+                                },
+                                {
+                                    "kategori_id": 2,
+                                    "navn": "Webutvikling"
+                                }
+                            ]
+                        },
+                        {
+                            "medlem_id": 3,
+                            "logoUrl": "",
                             "navn": "Norengros Gustav Pedersen",
                             "kategorier": [
-                                { "navn": "Detaljhandel" },
-                                { "navn": "Rekvisita" },
-                                { "navn": "Kontormøbler" }
+                                {
+                                    "kategori_id": 3,
+                                    "navn": "Detaljhandel"
+                                },
+                                {
+                                    "kategori_id": 4,
+                                    "navn": "Rekvisita"
+                                },
+                                {
+                                    "kategori_id": 5,
+                                    "navn": "Kontormøbler"
+                                }
                             ]
                         }
                     ];
@@ -50,7 +73,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 MedlemslisteComponent = __decorate([
                     core_1.Component({
                         selector: 'b2b-medlemsliste',
-                        templateUrl: 'app/medlemmer/medlemsliste.component.html'
+                        templateUrl: 'app/medlemmer/medlemsliste.component.html',
+                        styleUrls: ['app/medlemmer/medlemsliste.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MedlemslisteComponent);
