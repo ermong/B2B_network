@@ -20,8 +20,8 @@
             <thead>
                 <tr>
                     <th>
-                        <button class='btn btn-primary' (click)='toggleVisBilder()'>
-                            {{visBilder ? 'Vis' : "Skjul"}} bilder
+                        <button class='btn btn-primary' (click)='toggleVisLogo()'>
+                            {{visLogoer ? 'Vis' : "Skjul"}} logoer
                         </button>
                     </th>
                     <th> Medlem</th>
@@ -29,10 +29,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor='#medlem of medlemmer'>
-                    <td><img [src]='medlem.logoUrl'
+                <tr *ngFor='#medlem of medlemmer | medlemsFilter:filter'>
+                    <td><img class='logo' [src]='medlem.logoUrl'
                             [title]='medlem.navn'
-                            [style.width.px]='iconPxWidth'
                             *ngIf='visBilder && medlem.logoUrl'></td>
                     <td>{{medlem.navn}}</td>
                     <td><button class='btn btn-xs btn-distribuert' *ngFor='#kategori of medlem.kategorier'>{{kategori.navn}}</button></td>

@@ -1,11 +1,13 @@
-import {Component} from 'angular2/core'
+import {Component, OnInit} from 'angular2/core'
 import {IMedlem} from './medlem'
+import {MedlemFilterPipe} from './medlem-filter.pipe'
 @Component({
     selector: 'b2b-medlemsliste',
     templateUrl: 'app/medlemmer/medlemsliste.component.html',
-    styleUrls: ['app/medlemmer/medlemsliste.component.css']
+    styleUrls: ['app/medlemmer/medlemsliste.component.css'],
+    pipes: [MedlemFilterPipe]
 })
-export class MedlemslisteComponent {
+export class MedlemslisteComponent implements OnInit{
     iconPxWidth: number = 100;
     visBilder: boolean = true;
     filter: string ="";
@@ -52,6 +54,9 @@ export class MedlemslisteComponent {
             ]
         }
     ];
+    ngOnInit(): void {
+        console.log('In OnInit');
+    }
 
     toggleVisBilder(): void {
         this.visBilder = !this.visBilder;

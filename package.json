@@ -1,8 +1,8 @@
 {
-    "name": "product-management",
+    "name": "b2b_network",
     "version": "1.0.0",
-    "author": "Deborah Kurata",
-    "description": "Package for the Acme Product Management sample application",
+    "author": "Erik Mong",
+    "description": "Networking-application for sponsors",
     "scripts": {
         "start": "concurrently \"npm run tsc:w\" \"npm run lite\" ",
         "tsc": "tsc",
