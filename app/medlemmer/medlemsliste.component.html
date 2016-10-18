@@ -30,9 +30,11 @@
             </thead>
             <tbody>
                 <tr *ngFor='#medlem of medlemmer | medlemsFilter:filter'>
-                    <td><img class='logo' [src]='medlem.logoUrl'
-                            [title]='medlem.navn'
-                            *ngIf='visBilder && medlem.logoUrl'></td>
+                    <td>
+                        <b2b-logo *ngIf='visBilder && medlem.logoUrl' 
+                            [src]='medlem.logoUrl'
+                            [title]='medlem.navn' />
+                    </td>
                     <td>{{medlem.navn}}</td>
                     <td><button class='btn btn-xs btn-distribuert' *ngFor='#kategori of medlem.kategorier'>{{kategori.navn}}</button></td>
                 </tr>

@@ -24,7 +24,7 @@ System.register(['angular2/core', './medlem-filter.pipe'], function(exports_1, c
             MedlemslisteComponent = (function () {
                 function MedlemslisteComponent() {
                     this.iconPxWidth = 100;
-                    this.visBilder = true;
+                    this.visLogoer = true;
                     this.filter = "";
                     this.medlemslisteHeading = 'Medlemmer i nettverket';
                     this.medlemmer = [
@@ -73,8 +73,8 @@ System.register(['angular2/core', './medlem-filter.pipe'], function(exports_1, c
                 MedlemslisteComponent.prototype.ngOnInit = function () {
                     console.log('In OnInit');
                 };
-                MedlemslisteComponent.prototype.toggleVisBilder = function () {
-                    this.visBilder = !this.visBilder;
+                MedlemslisteComponent.prototype.toggleVisLogoer = function () {
+                    this.visLogoer = !this.visLogoer;
                 };
                 MedlemslisteComponent = __decorate([
                     core_1.Component({

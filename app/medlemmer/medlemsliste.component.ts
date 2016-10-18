@@ -1,6 +1,7 @@
 import {Component, OnInit} from 'angular2/core'
 import {IMedlem} from './medlem'
 import {MedlemFilterPipe} from './medlem-filter.pipe'
+
 @Component({
     selector: 'b2b-medlemsliste',
     templateUrl: 'app/medlemmer/medlemsliste.component.html',
@@ -9,7 +10,7 @@ import {MedlemFilterPipe} from './medlem-filter.pipe'
 })
 export class MedlemslisteComponent implements OnInit{
     iconPxWidth: number = 100;
-    visBilder: boolean = true;
+    visLogoer: boolean = true;
     filter: string ="";
     medlemslisteHeading: string = 'Medlemmer i nettverket';
     medlemmer: IMedlem[] = [
@@ -58,7 +59,7 @@ export class MedlemslisteComponent implements OnInit{
         console.log('In OnInit');
     }
 
-    toggleVisBilder(): void {
-        this.visBilder = !this.visBilder;
+    toggleVisLogoer(): void {
+        this.visLogoer = !this.visLogoer;
     }
 }
