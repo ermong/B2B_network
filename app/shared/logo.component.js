@@ -21,6 +21,17 @@ System.register(['angular2/core'], function(exports_1, context_1) {
             LogoComponent = (function () {
                 function LogoComponent() {
                 }
+                LogoComponent.prototype.ngOnChanges = function () {
+                    console.log('in OnChanges');
+                };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', String)
+                ], LogoComponent.prototype, "logoUrl", void 0);
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', String)
+                ], LogoComponent.prototype, "title", void 0);
                 LogoComponent = __decorate([
                     core_1.Component({
                         selector: 'b2b-logo',

@@ -1,4 +1,4 @@
-System.register(['angular2/core', './medlem-filter.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', './medlem-filter.pipe', './medlem-sorting.pipe', './Medlem.service', '../shared/logo.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './medlem-filter.pipe'], function(exports_1, c
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, medlem_filter_pipe_1;
+    var core_1, medlem_filter_pipe_1, medlem_sorting_pipe_1, Medlem_service_1, logo_component_1;
     var MedlemslisteComponent;
     return {
         setters:[
@@ -19,71 +19,47 @@ System.register(['angular2/core', './medlem-filter.pipe'], function(exports_1, c
             },
             function (medlem_filter_pipe_1_1) {
                 medlem_filter_pipe_1 = medlem_filter_pipe_1_1;
+            },
+            function (medlem_sorting_pipe_1_1) {
+                medlem_sorting_pipe_1 = medlem_sorting_pipe_1_1;
+            },
+            function (Medlem_service_1_1) {
+                Medlem_service_1 = Medlem_service_1_1;
+            },
+            function (logo_component_1_1) {
+                logo_component_1 = logo_component_1_1;
             }],
         execute: function() {
             MedlemslisteComponent = (function () {
-                function MedlemslisteComponent() {
+                function MedlemslisteComponent(_medlemService) {
+                    this._medlemService = _medlemService;
                     this.iconPxWidth = 100;
                     this.visLogoer = true;
                     this.filter = "";
+                    this.retning = "asc";
                     this.medlemslisteHeading = 'Medlemmer i nettverket';
-                    this.medlemmer = [
-                        {
-                            "medlem_id": 1,
-                            "navn": "Idrettspartner",
-                            "logoUrl": "",
-                            "kategorier": []
-                        },
-                        {
-                            "medlem_id": 2,
-                            "logoUrl": "http://www.knowit.no/globalassets/system/icons-and-logotypes/knowit-logotypes/knowit-logo-b.png/Large50",
-                            "navn": "Knowit Sør AS",
-                            "kategorier": [
-                                {
-                                    "kategori_id": 1,
-                                    "navn": "Konsulent"
-                                },
-                                {
-                                    "kategori_id": 2,
-                                    "navn": "Webutvikling"
-                                }
-                            ]
-                        },
-                        {
-                            "medlem_id": 3,
-                            "logoUrl": "",
-                            "navn": "Norengros Gustav Pedersen",
-                            "kategorier": [
-                                {
-                                    "kategori_id": 3,
-                                    "navn": "Detaljhandel"
-                                },
-                                {
-                                    "kategori_id": 4,
-                                    "navn": "Rekvisita"
-                                },
-                                {
-                                    "kategori_id": 5,
-                                    "navn": "Kontormøbler"
-                                }
-                            ]
-                        }
-                    ];
                 }
                 MedlemslisteComponent.prototype.ngOnInit = function () {
-                    console.log('In OnInit');
+                    var _this = this;
+                    this._medlemService.getMedlemmer()
+                        .subscribe(function (medlemmer) { return _this.medlemmer = medlemmer; }, function (error) { return _this.errorMessage = error; });
                 };
-                MedlemslisteComponent.prototype.toggleVisLogoer = function () {
+                MedlemslisteComponent.prototype.toggleVisLogo = function () {
                     this.visLogoer = !this.visLogoer;
+                };
+                MedlemslisteComponent.prototype.toggleAscDesc = function () {
+                    this.retning = this.retning == 'asc' ? 'desc' : 'asc';
                 };
                 MedlemslisteComponent = __decorate([
                     core_1.Component({
                         selector: 'b2b-medlemsliste',
                         templateUrl: 'app/medlemmer/medlemsliste.component.html',
                         styleUrls: ['app/medlemmer/medlemsliste.component.css'],
-                        pipes: [medlem_filter_pipe_1.MedlemFilterPipe]
+                        pipes: [medlem_filter_pipe_1.MedlemFilterPipe, medlem_sorting_pipe_1.MedlemSortingPipe],
+                        directives: [logo_component_1.LogoComponent],
+                        providers: [Medlem_service_1.MedlemService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [Medlem_service_1.MedlemService])
                 ], MedlemslisteComponent);
                 return MedlemslisteComponent;
             }());

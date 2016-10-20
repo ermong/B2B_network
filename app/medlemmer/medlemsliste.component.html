@@ -21,19 +21,21 @@
                 <tr>
                     <th>
                         <button class='btn btn-primary' (click)='toggleVisLogo()'>
-                            {{visLogoer ? 'Vis' : "Skjul"}} logoer
+                            {{!visLogoer ? 'Vis' : "Skjul"}} logoer
                         </button>
                     </th>
-                    <th> Medlem</th>
+                    <th><button type='button' class='btn btn-link' (click)='toggleAscDesc()'>Medlem </button>
+                    <img width="20px" src="{{'resources/img/arrow_' + retning + '.png'}}" /></th>
                     <th>Kategori</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor='#medlem of medlemmer | medlemsFilter:filter'>
+                <tr *ngFor='#medlem of medlemmer | medlemsFilter:filter | medlemsSorting:retning'>
                     <td>
-                        <b2b-logo *ngIf='visBilder && medlem.logoUrl' 
-                            [src]='medlem.logoUrl'
-                            [title]='medlem.navn' />
+                        <b2b-logo *ngIf='visLogoer && medlem.logoUrl'
+                            [logoUrl]='medlem.logoUrl' 
+                            [title]='medlem.navn'>
+                        </b2b-logo>
                     </td>
                     <td>{{medlem.navn}}</td>
                     <td><button class='btn btn-xs btn-distribuert' *ngFor='#kategori of medlem.kategorier'>{{kategori.navn}}</button></td>

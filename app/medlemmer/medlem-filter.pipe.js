@@ -23,9 +23,12 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 }
                 MedlemFilterPipe.prototype.transform = function (value, args) {
                     var filter = args[0] ? args[0].toLocaleLowerCase() : null;
-                    return filter ? value.filter(function (medlem) {
-                        return medlem.navn.toLocaleLowerCase().indexOf(filter) != -1;
-                    }) : value;
+                    return filter ?
+                        value.filter(function (medlem) {
+                            return medlem.navn.toLocaleLowerCase().indexOf(filter) != -1 ||
+                                medlem.kategorier.filter(function (kategori) { return kategori.navn.toLocaleLowerCase().indexOf(filter) != -1; }).length > 0;
+                        }) :
+                        value;
                 };
                 MedlemFilterPipe = __decorate([
                     core_1.Pipe({
