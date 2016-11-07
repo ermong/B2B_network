@@ -1,4 +1,4 @@
-System.register(['angular2/core', './medlem-filter.pipe', './medlem-sorting.pipe', './Medlem.service', '../shared/logo.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './medlem-filter.pipe', './medlem-sorting.pipe', '../Medlem.service', '../../shared/logo.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -50,11 +50,14 @@ System.register(['angular2/core', './medlem-filter.pipe', './medlem-sorting.pipe
                 MedlemslisteComponent.prototype.toggleAscDesc = function () {
                     this.retning = this.retning == 'asc' ? 'desc' : 'asc';
                 };
+                MedlemslisteComponent.prototype.setFilter = function (nyttFilter) {
+                    this.filter = nyttFilter;
+                };
                 MedlemslisteComponent = __decorate([
                     core_1.Component({
                         selector: 'b2b-medlemsliste',
-                        templateUrl: 'app/medlemmer/medlemsliste.component.html',
-                        styleUrls: ['app/medlemmer/medlemsliste.component.css'],
+                        templateUrl: 'app/medlem/medlemmer/medlemsliste.component.html',
+                        styleUrls: ['app/medlem/medlemmer/medlemsliste.component.css'],
                         pipes: [medlem_filter_pipe_1.MedlemFilterPipe, medlem_sorting_pipe_1.MedlemSortingPipe],
                         directives: [logo_component_1.LogoComponent],
                         providers: [Medlem_service_1.MedlemService]

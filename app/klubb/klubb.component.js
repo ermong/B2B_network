@@ -11,35 +11,26 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var MedlemFilterPipe;
+    var KlubbComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            MedlemFilterPipe = (function () {
-                function MedlemFilterPipe() {
+            KlubbComponent = (function () {
+                function KlubbComponent() {
                 }
-                MedlemFilterPipe.prototype.transform = function (value, args) {
-                    var filter = args[0] ? args[0].toLocaleLowerCase() : null;
-                    return filter ?
-                        value.filter(function (medlem) {
-                            return medlem.navn.toLocaleLowerCase().indexOf(filter) != -1 ||
-                                medlem.kategorier.filter(function (kategori) { return kategori.navn.toLocaleLowerCase().indexOf(filter) != -1; }).length > 0;
-                        }) :
-                        value;
-                };
-                MedlemFilterPipe = __decorate([
-                    core_1.Pipe({
-                        name: 'medlemsFilter'
+                KlubbComponent = __decorate([
+                    core_1.Component({
+                        templateUrl: 'app/klubb/klubb.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], MedlemFilterPipe);
-                return MedlemFilterPipe;
+                ], KlubbComponent);
+                return KlubbComponent;
             }());
-            exports_1("MedlemFilterPipe", MedlemFilterPipe);
+            exports_1("KlubbComponent", KlubbComponent);
         }
     }
 });
-//# sourceMappingURL=medlem-filter.pipe.js.map
+//# sourceMappingURL=klubb.component.js.map

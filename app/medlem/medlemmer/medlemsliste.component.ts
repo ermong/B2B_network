@@ -2,13 +2,13 @@ import {Component, OnInit} from 'angular2/core';
 import {IMedlem, Medlem} from './medlem';
 import {MedlemFilterPipe} from './medlem-filter.pipe';
 import {MedlemSortingPipe} from './medlem-sorting.pipe';
-import {MedlemService} from './Medlem.service';
-import {LogoComponent} from '../shared/logo.component';
+import {MedlemService} from '../Medlem.service';
+import {LogoComponent} from '../../shared/logo.component';
 
 @Component({
     selector: 'b2b-medlemsliste',
-    templateUrl: 'app/medlemmer/medlemsliste.component.html',
-    styleUrls: ['app/medlemmer/medlemsliste.component.css'],
+    templateUrl: 'app/medlem/medlemmer/medlemsliste.component.html',
+    styleUrls: ['app/medlem/medlemmer/medlemsliste.component.css'],
     pipes: [MedlemFilterPipe, MedlemSortingPipe],
     directives: [LogoComponent],
     providers: [MedlemService]
@@ -37,5 +37,8 @@ export class MedlemslisteComponent implements OnInit{
     }
     toggleAscDesc(): void {
         this.retning = this.retning == 'asc' ? 'desc' : 'asc';
+    }
+    setFilter(nyttFilter:string) {
+        this.filter = nyttFilter;
     }
 }

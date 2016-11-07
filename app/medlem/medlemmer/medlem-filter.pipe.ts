@@ -11,7 +11,7 @@ export class MedlemFilterPipe implements PipeTransform{
         return filter ? 
             value.filter((medlem: Medlem) =>
                 medlem.navn.toLocaleLowerCase().indexOf(filter) != -1 || 
-                medlem.kategorier.filter((kategori: IKategori)=> kategori.navn.toLocaleLowerCase().indexOf(filter) != -1).length > 0) : 
+                (medlem.kategorier && medlem.kategorier.filter((kategori: IKategori)=> kategori.navn.toLocaleLowerCase().indexOf(filter) != -1).length > 0)) : 
             value;
     }
 }
